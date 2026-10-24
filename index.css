@@ -1,0 +1,283 @@
+/* ── Base ─────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: #0a0a0f;
+    width: 400px;
+    min-height: 320px;
+    padding: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #fff;
+}
+
+/* ── Video bg ─────────────────────────────────────────────────────────── */
+#video-background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -10;
+    opacity: 0.35;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+#title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    margin-top: 24px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 20px rgba(120,80,255,0.7);
+}
+
+#tagline {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ── Status message ──────────────────────────────────────────────────── */
+#status_msg {
+    display: none;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    max-width: 370px;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+#status_msg.status-success { color: #7fffaa; background: rgba(100,255,150,0.08); border: 1px solid rgba(100,255,150,0.2); }
+#status_msg.status-info    { color: #aaddff; background: rgba(100,180,255,0.08); border: 1px solid rgba(100,180,255,0.2); }
+#status_msg.status-warn    { color: #ffcc66; background: rgba(255,180,50,0.08);  border: 1px solid rgba(255,180,50,0.2); }
+#status_msg.status-error   { color: #ff7070; background: rgba(255,80,80,0.08);   border: 1px solid rgba(255,80,80,0.2); }
+
+/* ── Main content ────────────────────────────────────────────────────── */
+#main_content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 0 16px;
+}
+
+/* ── Domain label ────────────────────────────────────────────────────── */
+#domain {
+    display: none;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ── Results box ─────────────────────────────────────────────────────── */
+.box {
+    display: none;
+    width: 100%;
+    max-height: 260px;
+    overflow-y: auto;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 14px;
+    backdrop-filter: blur(6px);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+
+/* Provider tag */
+.provider-tag {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-align: right;
+    margin-bottom: 6px;
+}
+
+/* Score badge */
+.score-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--score-color, #aaa);
+    color: var(--score-color, #aaa);
+    margin-bottom: 10px;
+}
+
+/* Summary text */
+.summary-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.55;
+    margin-bottom: 10px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 8px 0;
+}
+
+/* Flags */
+.flags-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.flag-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.flag-icon { font-size: 14px; flex-shrink: 0; padding-top: 1px; }
+
+.flag-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.flag-body strong { font-size: 13px; }
+
+.flag-detail {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+#button_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.btn {
+    background: linear-gradient(135deg, rgba(120,80,255,0.7), rgba(60,130,255,0.7));
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 11px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+    transform: none;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    padding: 6px 18px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+/* Spinner */
+.spinner {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Settings panel ──────────────────────────────────────────────────── */
+#settings_panel {
+    width: calc(100% - 32px);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 4px;
+}
+
+.settings-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 8px;
+}
+
+.hint {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+}
+
+#gemini_key_input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    padding: 9px 12px;
+    font-size: 13px;
+}
+
+#gemini_key_input::placeholder { color: rgba(255,255,255,0.3); }
+#gemini_key_input:focus { outline: none; border-color: rgba(120,80,255,0.7); }
+
+.btn-sm {
+    background: linear-gradient(135deg, rgba(120,80,255,0.7), rgba(60,130,255,0.7));
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 20px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-sm:hover { opacity: 0.85; }
+
+.settings-link {
+    font-size: 12px;
+    color: rgba(180,140,255,0.85);
+    text-decoration: none;
+    align-self: center;
+}
+
+.settings-link:hover { text-decoration: underline; }

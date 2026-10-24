@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <video id="video-background" autoplay muted loop>
+            <source src="/assets/clip.mp4" type="video/mp4">
+        </video>
+
+        <h2 id="title">User-Friendly Forces</h2>
+        <p id="tagline">Your Privacy Matters</p>
+
+        <!-- Status / provider info -->
+        <p id="status_msg"></p>
+
+        <!-- Main content -->
+        <div id="main_content">
+            <p id="domain"></p>
+            <div id="privacy_summary" class="box"></div>
+
+            <div id="button_container">
+                <button class="btn" id="summarize_privacy_button">🔍 Analyze Privacy Policy</button>
+                <button class="btn-ghost" id="settings_btn" title="Settings">⚙️ Settings</button>
+            </div>
+        </div>
+
+        <!-- Settings panel -->
+        <div id="settings_panel" style="display:none">
+            <p class="settings-title">Gemini API Key <span class="hint">(fallback when Ollama is offline)</span></p>
+            <input type="password" id="gemini_key_input" placeholder="AIza…" autocomplete="off" />
+            <div style="display:flex;gap:8px;margin-top:8px;">
+                <button class="btn-sm" id="save_key_btn">Save</button>
+                <a class="settings-link" href="https://aistudio.google.com/app/apikey" target="_blank">Get a free key ↗</a>
+            </div>
+        </div>
+
+        <script src="hi.js"></script>
+    </body>
+</html>

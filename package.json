@@ -1,0 +1,13 @@
+{
+  "name": "user-friendly-forces-server",
+  "version": "2.0.0",
+  "description": "Local AI backend for User-Friendly Forces extension (Ollama + Gemini fallback)",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

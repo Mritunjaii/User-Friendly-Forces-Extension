@@ -1,0 +1,17 @@
+{
+	"name": "User-Friendly Forces",
+	"description": "Keep your Privacy! Automatically summarizes and highlights suspicious points in a website's privacy policy using Ollama (local AI) or Gemini (cloud fallback).",
+	"version": "2.0",
+	"manifest_version": 3,
+	"icons": {
+		"48": "assets/48.png",
+		"96": "assets/96.png",
+		"128": "assets/128.png"
+	},
+	"action": {
+		"default_popup": "index.html",
+		"default_title": "Your Privacy Matters."
+	},
+	"permissions": ["contextMenus", "tabs", "storage"],
+	"host_permissions": ["http://localhost:5000/*"]
+}
